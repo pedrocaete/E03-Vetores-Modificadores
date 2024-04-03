@@ -15,15 +15,9 @@ public class Main {
         conta1.saldo = 2000;
         conta1.limite = 3500;
 
-        Conta conta2 = new Conta();
-        conta2 = conta1;
+        conta1.sacar(1000);
+        conta1.depositar(700);
 
-        conta1.imprimirConta();
-
-        if(conta1 == conta2) {
-            System.out.println("Iguais");
-        } else {
-            System.out.println("Diferentes");
-        }
+        conta1.extrato();
     }
 }

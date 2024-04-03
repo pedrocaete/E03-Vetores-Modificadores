@@ -1,3 +1,4 @@
+
 public class Conta {
 
     Cliente dono = new Cliente();
@@ -6,11 +7,12 @@ public class Conta {
     String agencia;
     double limite;
     Operacao[] operacoes = new Operacao[1000];
+    int ultima_operacao = 0;
     boolean depositar(double valor) {
         if(valor > 0.0) {
             this.saldo += valor;
-            operacoes[].tipo = 'd';
-            operacoes[].valor = valor;
+            this.operacoes[ultima_operacao] = new Operacao('d',valor);
+            this.ultima_operacao ++;
             return true;
         } else {
             return false;
@@ -21,9 +23,8 @@ public class Conta {
     boolean sacar(double valor) {
         if(valor > 0.0 && valor <= this.saldo) {
             this.saldo -= valor;
-
-            operacoes[].tipo = 's';
-            operacoes[].valor = valor;
+            this.operacoes[ultima_operacao] = new Operacao('s',valor);
+            this.ultima_operacao ++;
             return true;
         } else {
             return false;
@@ -48,5 +49,12 @@ public class Conta {
         System.out.println("Saldo: " + this.saldo);
         System.out.println("Limite: " + this.limite);
 
+    }
+    void extrato(){
+        for(int i = 0; i < this.ultima_operacao; i++) {
+            System.out.print(this.operacoes[i].data + "  ");
+            System.out.print(this.operacoes[i].tipo + "  ");
+            System.out.print(this.operacoes[i].valor + "\n");
+        }
     }
 }
