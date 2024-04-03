@@ -1,13 +1,18 @@
 
 public class Conta {
 
-    Cliente dono = new Cliente();
-    double saldo;
-    int numero;
-    String agencia;
-    double limite;
-    Operacao[] operacoes = new Operacao[1000];
-    int ultima_operacao = 0;
+    public static int totalContas;
+    private Cliente dono;
+    private double saldo;
+    private int numero;
+    private String agencia;
+    private double limite;
+    private Operacao[] operacoes = new Operacao[1000];
+    private int ultima_operacao = 0;
+
+    public Conta(Cliente dono, double saldo, int numero, String agencia, double limite){
+        totalContas++;
+    }
     boolean depositar(double valor) {
         if(valor > 0.0) {
             this.saldo += valor;
@@ -52,9 +57,36 @@ public class Conta {
     }
     void extrato(){
         for(int i = 0; i < this.ultima_operacao; i++) {
-            System.out.print(this.operacoes[i].data + "  ");
-            System.out.print(this.operacoes[i].tipo + "  ");
-            System.out.print(this.operacoes[i].valor + "\n");
+            System.out.print(this.operacoes[i].getData() + "  ");
+            System.out.print(this.operacoes[i].getTipo() + "  ");
+            System.out.print(this.operacoes[i].getValor() + "\n");
         }
+    }
+
+    public Cliente getDono(){
+        return this.dono;
+    }
+    public void setDono(Cliente novoDono){
+        this.dono = novoDono;
+    }
+
+    public int getNumero(){
+        return this.numero;
+    }
+
+    public void setNumero(int novoNumero){
+        this.numero = novoNumero;
+    }
+
+    public double getSaldo(){
+        return this.saldo;
+    }
+
+    public double getLimite(){
+        return this.limite;
+    }
+
+    public void setLimite(double novoLimite){
+        this.limite = novoLimite;
     }
 }
