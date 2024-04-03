@@ -11,9 +11,7 @@ public class Main {
         Conta conta1 = new Conta(cliente1, 2000,1234, "222-2", 3500);
 
         conta1.depositar(900);
-        conta1.sacar(900);
-        //sacar não é exibido em extrato quando sacar é maior que depositar ou se depositar não for usado
-
+        conta1.sacar(2900);
 
         conta1.extrato();
     }

@@ -10,8 +10,13 @@ public class Conta {
     private Operacao[] operacoes = new Operacao[1000];
     private int ultima_operacao = 0;
 
-    public Conta(Cliente dono, double saldo, int numero, String agencia, double limite){
+    public Conta(Cliente dono, double saldo, int numero, String agencia, double limite) {
         totalContas++;
+        this.dono = dono;
+        this.saldo = saldo;
+        this.numero = numero;
+        this.agencia = agencia;
+        this.limite = limite;
     }
     boolean depositar(double valor) {
         if(valor > 0.0) {
